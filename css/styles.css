@@ -3,7 +3,12 @@ body {
     text-align: center;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Montserrat';
     font-weight: 900;
 }
@@ -35,24 +40,26 @@ p {
 /* Sections */
 
 .colored-section {
-    background-color: #f8c132;
-    color: #fff;
+    background-color: #4e3a08;
+    color: #FFEECB;
 }
 
 .white-section {
-    background-color: #fff;
+    background-color: #FFEECB;
+    color: #4e3a08;
 }
 
 /* Navigation Bar */
 
 .navbar {
     padding: 0 0 4.5rem;
-    margin-bottom: 0px;
+    margin-bottom: -20px;
 }
 
 .navbar-logo {
     width: 200px;
-    height: 100px;  
+    height: 50px;
+    margin-top: 15px;
     margin-left: 10px;
 }
 
@@ -76,24 +83,31 @@ p {
 
 /* Title Section */
 
-#title .container-fluid {
-    padding: 3% 15% 7%;
-    text-align: left;
-    margin-bottom: -75px;
+#title {
+    margin-top: -100px;
+    margin-left: -150px;
+    margin-right: -150px;
+    margin-bottom: -20px;
 }
 
-.title-image {
-    width: 19%;
-    height: 79%;
-    transform: rotate(25deg);
-    position: absolute;
-    right: 24%;
+#tagline {
+    text-align: left;
+    margin-top: 20px;
 }
+
+.carousel-item .title-image {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
 
 /* Features Section */
 
 #features {
-    padding: 7% 15%;
+    padding: 5% 5%;
     position: relative;
     margin-top: -25px;
     margin-bottom: -25px;
@@ -108,9 +122,8 @@ p {
     padding: 5%;
 }
 
-.icon {
-    margin-bottom: 1rem;
-    color: #f8c132;
+.fa-solid {
+    color: #260B00;
 }
 
 /* Testimonials Section */
@@ -129,16 +142,64 @@ p {
 /* CTA Section */
 
 #cta {
-    padding: 7% 7%;
+    padding: 5% 7%;
     margin-bottom: -100px;
+    color: #260B00;
+}
+
+.social-icon {
+    margin: 20px 10px;
 }
 
 #footer {
-    padding: 7% 7%;
-    margin-top: -100px;
-    margin-bottom: -100px;
+    padding: 3% 5%;
 }
 
-.social-icon{
-    margin: 20px 10px;
+#footer p {
+    color: #4e3a08;
+}
+
+/* Modal */
+.modal-content {
+    background-color: #4E4637;
+    color: #FFEECB;
+    text-align: left;
+}
+
+.modal-header {
+    background-color: #4E4637;
+    color: #FFEECB;
+    border-bottom: none;
+    margin-bottom: -5px;
+}
+
+.modal-title {
+    font-family: "Montserrat";
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+.modal .btn-close {
+    color: #fff;
+}
+
+.modal-footer .btn-close {
+    color: #fff;
+    opacity: 1;
+}
+
+.modal-footer .btn-close:hover {
+    opacity: 0.75;
+}
+
+.modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
 }

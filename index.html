@@ -26,7 +26,7 @@
       <!-- Nav Bar -->
 
       <nav class="navbar navbar-expand-lg navbar-dark">
-        <img src="images/logo-tnsp.png" class = "navbar-logo" alt="logo image" />
+        <img src="images/logo-tnsp.png" class="navbar-logo" alt="logo image" />
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -51,15 +51,41 @@
 
       <div class="row">
 
-        <div class="col-lg-6">
+        <div class="col-lg-6" id="tagline">
           <h1 class="big-heading">Showcase Your Furry Friend's Finest Moments.</h1>
-          <button type="button" class="btn btn-dark btn-lg download-button">
+          <button type="button" class="btn btn-light btn-lg download-button" data-bs-toggle="modal"
+          data-bs-target="#petFormModal">
             Get Started</button>
         </div>
 
         <div class="col-lg-6">
-          <img class="" src="">
+          <div id="title-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="title-image" src="images/title-img.jpg" alt="Slide 1">
+              </div>
+              <div class="carousel-item">
+                <img class="title-image" src="images/title-img2.jpg" alt="Slide 2">
+              </div>
+              <div class="carousel-item">
+                <img class="title-image" src="images/title-img3.jpg" alt="Slide 3">
+              </div>
+              <div class="carousel-item">
+                <img class="title-image" src="images/title-img4.jpg" alt="Slide 4">
+              </div>
+            </div>
+        
+            <a class="carousel-control-prev" href="#title-carousel" role="button" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#title-carousel" role="button" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </a>
+          </div>
         </div>
+        
 
       </div>
     </div>
@@ -67,26 +93,26 @@
 
   <!-- Features -->
 
-    <section class="white-section" id="features">
-      <div class="row">
+  <section class="white-section" id="features">
+    <div class="row">
 
-        <div class="feature-box col-lg-4">
-          <i class="fa-solid fa-cloud-arrow-up fa-3x"></i>
-          <h3 class="feature-title">High-quality uploads.</h3>
-        </div>
-
-        <div class="feature-box col-lg-4">
-          <i class="fa-solid fa-magnifying-glass fa-3x"></i>
-          <h3 class="feature-title">Quick-search feature.</h3>
-        </div>
-
-        <div class="feature-box col-lg-4">
-          <i class="fa-solid fa-circle-check fa-3x"></i>
-          <h3 class="feature-title">User-friendly interface.</h3>
-        </div>
-
+      <div class="feature-box col-lg-4">
+        <i class="fa-solid fa-cloud-arrow-up fa-3x"></i>
+        <h3 class="feature-title">High-quality uploads.</h3>
       </div>
-  </div>
+
+      <div class="feature-box col-lg-4">
+        <i class="fa-solid fa-magnifying-glass fa-3x"></i>
+        <h3 class="feature-title">Quick-search feature.</h3>
+      </div>
+
+      <div class="feature-box col-lg-4">
+        <i class="fa-solid fa-circle-check fa-3x"></i>
+        <h3 class="feature-title">User-friendly interface.</h3>
+      </div>
+
+    </div>
+    </div>
   </section>
 
   <!-- Testimonials -->
@@ -102,8 +128,8 @@
         </div>
         <div class="carousel-item container-fluid">
           <h2 class="testimonial-text"></h2>
-          <img class="testimonial-image" src="images/lady-img.jpg" alt="lady-profile">
-          <em>Beverly, Illinois</em>
+          <img class="testimonial-image" src="images/cat-img.jpg" alt="cat-profile">
+          <em>Mia, Illinois</em>
         </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#testimonial-carousel" data-bs-slide="prev">
@@ -116,22 +142,53 @@
 
   </section>
 
-  <!-- Call to Action -->
-
-  <section class="white-section" id="cta">
-    <h3 class="big-heading">What are you waiting for?</h3>
-    <h3 class="big-heading">Get started today!</h3>
-    <button type="button" class="btn btn-dark btn-lg download-button">
-      Get Started</button>
-  </section>
-
   <!-- Footer -->
 
-  <footer class="colored-section" id="footer">
-    
+  <footer class="white-section" id="footer">
+
     <p>© Copyright 2023 PAWSTER</p>
 
   </footer>
+
+ <!-- Modal -->
+
+ <div class="modal fade" id="petFormModal" tabindex="-1" aria-labelledby="petFormModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="petFormModalLabel">Add Pet Info</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="petForm">
+          <div class="mb-3">
+            <label for="petName" class="form-label">Name</label>
+            <input type="text" class="form-control" id="petName" required>
+          </div>
+          <div class="mb-3">
+            <label for="petAge" class="form-label">Age</label>
+            <input type="text" class="form-control" id="petAge" required>
+          </div>
+          <div class="mb-3">
+            <label for="petTraits" class="form-label">Personality Traits</label>
+            <input type="text" class="form-control" id="petTraits" required>
+          </div>
+          <div class="mb-3">
+            <label for="petToy" class="form-label">Favorite Toy</label>
+            <input type="text" class="form-control" id="petToy" required>
+          </div>
+          <div class="mb-3">
+            <label for="petImage" class="form-label">Image</label>
+            <input type="file" class="form-control" id="petImage" required>
+          </div>
+          <button type="submit" class="btn btn-light">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
 
 </body>
 

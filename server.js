@@ -42,8 +42,8 @@ app.post('/add-pet', (req, res) => {
     }
   };
 
-  const accessKeyIdJson = require('./accessKeyId.json');
-  const secretAccessKeyJson = require('./secretAccessKey.json');
+  const accessKeyIdJson = require('./assets/accessKeyId.json');
+  const secretAccessKeyJson = require('./assets/secretAccessKey.json');
 
   aws.config.update({
     accessKeyId: accessKeyIdJson.accessKeyId,

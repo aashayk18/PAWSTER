@@ -1,6 +1,6 @@
 # PAWSTER 
 <p align="center">
-<img src=""> 
+<img src="https://github.com/aashayk18/PAWSTER/blob/master/assets/readmeImg.png"> 
 </p>  
 <h2 align="center">
     A platform to showcase and celebrate your beloved pets!

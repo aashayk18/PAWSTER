@@ -1,4 +1,3 @@
 node_modules/
-awsDetails.txt
-pawsterUser_accessKeys.csv
-pawsterUser_credentials.csv
+secrets/
+images/

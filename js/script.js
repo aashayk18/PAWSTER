@@ -46,6 +46,27 @@ document.getElementById("petForm").addEventListener("submit", async function (ev
     var petToy = document.getElementById("petToy").value;
     var petImage = document.getElementById("petImage").files[0];
 
+    // Extracting the numeric value and unit from the age string
+    const ageRegex = /^(\d+)\s*(months|years)$/i;
+    const ageMatch = petAge.match(ageRegex);
+
+    if (ageMatch) {
+        const ageValue = parseInt(ageMatch[1]); // Extracted numeric value
+        const ageUnit = ageMatch[2].toLowerCase(); // Extracted unit (months or years)
+
+        // Storing the age value in the appropriate format
+        if (ageUnit === 'months') {
+            petAge = ageValue + ' months';
+        } else if (ageUnit === 'years') {
+            petAge = ageValue + ' years';
+        } else {
+            // Invalid age unit
+            console.error('Invalid age unit:', ageUnit);
+        }
+    } else {
+        // Invalid age format
+        console.error('Invalid age format:', petAge);
+    }
 
     var formData = new FormData();
     formData.append("petName", petName);

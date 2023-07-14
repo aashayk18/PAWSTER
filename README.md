@@ -23,7 +23,7 @@ A pet lovers' community where you can showcase your furry friends and their *uni
 
 ## 🚀 Getting Started 
 
-To get started with My Pet Spotlight, simply visit our [website](). From there, you can browse through existing pet profiles or create your own.
+To get started with My Pet Spotlight, simply visit our [website](https://pawster.vercel.app/). From there, you can browse through existing pet profiles or create your own.
 
 To create a pet profile, click the "Get Started" button and contribute with your pet's information, including their name, breed, age, and photo.
 
@@ -43,6 +43,6 @@ I am always happy to assist you and answer any questions you may have.
 
 ## 📝 License
 
-PAWSTER is licensed under the MIT License. See the [LICENSE file](https://github.com/aashayk18/PAWSTER/blob/master/LICENSE) for more information.
+PAWSTER is licensed under the MIT License. See the [LICENSE file](https://github.com/aashayk18/PAWSTER/blob/master/LICENSE.md) for more information.
 
 Thank you for using PAWSTER! We hope you and your furry friends enjoy using our website.

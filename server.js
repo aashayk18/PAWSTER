@@ -31,7 +31,7 @@ const petSchema = new mongoose.Schema({
 
 const Pet = mongoose.model('Pet', petSchema);
 
-app.post('https://pawster.vercel.app/add-pet', (req, res) => {
+app.post('/add-pet', (req, res) => {
   const petData = {
     name: req.body.petName,
     age: req.body.petAge,
@@ -51,10 +51,7 @@ app.post('https://pawster.vercel.app/add-pet', (req, res) => {
     region: 'us-east-1'
   });
 
-  // Change the URL to point to your Vercel deployment
-  const s3 = new aws.S3({
-    endpoint: 'https://s3.amazonaws.com'
-  });
+  const s3 = new aws.S3();
 
   const file = req.files.petImage;
   const fileName = file.name;
@@ -92,7 +89,7 @@ app.post('https://pawster.vercel.app/add-pet', (req, res) => {
 });
 
 
-app.get('https://pawster.vercel.app/search', async (req, res) => {
+app.get('/search', async (req, res) => {
   const searchTerm = req.query.term;
   const regex = new RegExp(searchTerm, 'i');
   const pets = await Pet.find({ name: regex });

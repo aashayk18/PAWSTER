@@ -10,10 +10,9 @@ const app = express();
 app.use(fileUpload());
 app.use(cors());
 
-const PORT = process.env.PORT || 5000;
-const MONGOOSE_URL = process.env.MONGO_URI;
+const mongoURL = process.env.MONGO_URI;
 
-mongoose.connect(MONGOOSE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(mongoURL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('MongoDB Connection established successfully.');
   }).catch((err) => {
@@ -103,6 +102,6 @@ app.get('/search', async (req, res) => {
   res.json(pets);
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
 });

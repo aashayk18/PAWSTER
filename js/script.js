@@ -19,34 +19,25 @@ document.addEventListener("DOMContentLoaded", function () {
                 petCardContainer.innerHTML = petCardHTML;
 
                 var image = petCardContainer.querySelector(".image img");
-                image.setAttribute("src", "uploads/" + pet.image);
+                image.src = pet.image.url;
 
                 petCardsContainer.appendChild(petCardContainer);
             });
         }
     }
 
-    function fetchPets() {
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "http://localhost:3000/search");
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    var pets = JSON.parse(xhr.responseText);
-                    generatePetCards(pets);
-                } else {
-                    console.error('Error fetching pets:', xhr.status);
-                    alert('Error fetching pets. Please try again.');
-                }
-            }
-        };
-        xhr.send();
-    }
+    var fetchPets = async function () {
+        const response = await fetch("http://localhost:3000/search");
+        const pets = await response.json();
+        generatePetCards(pets);
+    };
 
     fetchPets();
 });
 
-document.getElementById("petForm").addEventListener("submit", function (event) {
+
+
+document.getElementById("petForm").addEventListener("submit", async function (event) {
     event.preventDefault();
 
     var petName = document.getElementById("petName").value;
@@ -55,6 +46,7 @@ document.getElementById("petForm").addEventListener("submit", function (event) {
     var petToy = document.getElementById("petToy").value;
     var petImage = document.getElementById("petImage").files[0];
 
+
     var formData = new FormData();
     formData.append("petName", petName);
     formData.append("petAge", petAge);
@@ -62,19 +54,20 @@ document.getElementById("petForm").addEventListener("submit", function (event) {
     formData.append("petToy", petToy);
     formData.append("petImage", petImage);
 
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://localhost:3000/add-pet");
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                fetchPets();
-            } else {
-                console.error('Error storing pet data:', xhr.status);
-                alert('Error storing pet data. Please try again.');
-            }
-        }
+    const response = await fetch("http://localhost:3000/add-pet", { method: "POST", body: formData });
+    if (response.status === 200) {
+
+        var fetchPets = async function () {
+            const response = await fetch("http://localhost:3000/search");
+            const pets = await response.json();
+            generatePetCards(pets);
+        };
+
+        fetchPets();
+    } else {
+        console.error('Error storing pet data:', response.status);
+        alert('Error storing pet data. Please try again.');
     };
-    xhr.send(formData);
 
     document.getElementById("petForm").reset();
     location.reload();
@@ -85,81 +78,70 @@ document.getElementById("petForm").addEventListener("submit", function (event) {
     modalBackdrop.style.display = "none";
 });
 
-document.getElementById("searchForm").addEventListener("submit", function (event) {
+document.getElementById("searchForm").addEventListener("submit", async function (event) {
     event.preventDefault();
 
-    var searchTerm = document.getElementById("searchTerm").value;
+    const searchTerm = document.getElementById("searchTerm").value;
 
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://localhost:3000/search?term=" + encodeURIComponent(searchTerm));
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                var pets = JSON.parse(xhr.responseText);
-                var petDetailsContent = document.getElementById("petDetailsContent");
-                petDetailsContent.innerHTML = "";
+    const response = await fetch("http://localhost:3000/search?term=" + encodeURIComponent(searchTerm));
+    const pets = await response.json();
 
-                if (pets.length === 0) {
-                    petDetailsContent.textContent = "No pets found";
-                } else {
-                    pets.forEach(function (pet) {
-                        var petDetails = document.createElement("div");
+    const petDetailsContent = document.getElementById("petDetailsContent");
+    petDetailsContent.innerHTML = "";
 
-                        var imageContainer = document.createElement("div");
-                        imageContainer.style.display = "flex";
-                        imageContainer.style.justifyContent = "center";
+    if (pets.length === 0) {
+        petDetailsContent.textContent = "No pets found";
+    } else {
+        pets.forEach(function (pet) {
+            var petDetails = document.createElement("div");
 
-                        var image = document.createElement("img");
-                        image.src = "uploads/" + pet.image;
-                        image.alt = pet.name;
-                        image.style.borderRadius = "10px";
-                        image.style.height = "200px";
-                        image.style.width = "300px";
-                        
-                        imageContainer.appendChild(image);
+            var imageContainer = document.createElement("div");
+            imageContainer.style.display = "flex";
+            imageContainer.style.justifyContent = "center";
 
-                        petDetails.appendChild(imageContainer);
+            var image = document.createElement("img");
+            image.src = pet.image.url;
+            image.alt = pet.name;
+            image.style.borderRadius = "10px";
+            image.style.height = "200px";
+            image.style.width = "300px";
 
-                        var name = document.createElement("h6");
-                        name.textContent = "Name: " + pet.name;
-                        name.style.textAlign = "center";
-                        name.style.fontFamily = "Montserrat";
-                        name.style.fontWeight = "600";
-                        name.style.fontSize = "1.1rem";
-                        name.style.color = "#4e3a08";
-                        name.style.marginTop = "10px";
-                        name.style.marginBottom = "15px";
-                        petDetails.appendChild(name);
+            imageContainer.appendChild(image);
 
-                        var age = document.createElement("p");
-                        age.textContent = "Age: " + pet.age;
-                        age.style.color = "#4e3a08";
-                        petDetails.appendChild(age);
+            petDetails.appendChild(imageContainer);
 
-                        var traits = document.createElement("p");
-                        traits.textContent = "Traits: " + pet.traits;
-                        traits.style.color = "#4e3a08";
-                        petDetails.appendChild(traits);
+            var name = document.createElement("h6");
+            name.textContent = "Name: " + pet.name;
+            name.style.textAlign = "center";
+            name.style.fontFamily = "Montserrat";
+            name.style.fontWeight = "600";
+            name.style.fontSize = "1.1rem";
+            name.style.color = "#4e3a08";
+            name.style.marginTop = "10px";
+            name.style.marginBottom = "15px";
+            petDetails.appendChild(name);
 
-                        var toy = document.createElement("p");
-                        toy.textContent = "Favorite Toy: " + pet.toy;
-                        toy.style.color = "#4e3a08";
-                        toy.style.marginBottom = "20px";
-                        petDetails.appendChild(toy);
+            var age = document.createElement("p");
+            age.textContent = "Age: " + pet.age;
+            age.style.color = "#4e3a08";
+            petDetails.appendChild(age);
 
-                        petDetailsContent.appendChild(petDetails);
-                    });
-                }
+            var traits = document.createElement("p");
+            traits.textContent = "Traits: " + pet.traits;
+            traits.style.color = "#4e3a08";
+            petDetails.appendChild(traits);
 
-                searchForm.reset();
+            var toy = document.createElement("p");
+            toy.textContent = "Favorite Toy: " + pet.toy;
+            toy.style.color = "#4e3a08";
+            toy.style.marginBottom = "20px";
+            petDetails.appendChild(toy);
 
-                var petDetailsModal = new bootstrap.Modal(document.getElementById("petDetailsModal"));
-                petDetailsModal.show();
-            } else {
-                console.error('Error searching for pets:', xhr.status);
-                alert('Error searching for pets. Please try again.');
-            }
-        }
-    };
-    xhr.send();
-});
+            petDetailsContent.appendChild(petDetails);
+        });
+        searchForm.reset();
+
+        const petDetailsModal = new bootstrap.Modal(document.getElementById("petDetailsModal"));
+        petDetailsModal.show();
+      }
+    });

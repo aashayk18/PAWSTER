@@ -1,14 +1,16 @@
 const express = require('express');
 const cors = require('cors');
-const multer = require('multer');
+const fileUpload = require('express-fileupload');
 const mongoose = require('mongoose');
+const aws = require('aws-sdk');
+const fs = require('fs');
 
 const app = express();
-const upload = multer({ dest: 'uploads/' });
 
+app.use(fileUpload());
 app.use(cors());
 
-mongoose.connect('mongodb://127.0.0.1:27017/petDatabase', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://aashayk18:AashayK_180802@cluster0.x4zv7c7.mongodb.net/petDatabase?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('MongoDB Connection established successfully.');
   }).catch((err) => {
@@ -19,26 +21,63 @@ const db = mongoose.connection;
 
 const petSchema = new mongoose.Schema({
   name: String,
-  age: Number, // Change 'age' data type to Number
+  age: Number,
   traits: String,
   toy: String,
-  image: String
+  image: {
+    url: String
+  }
 });
 
-const Pet = mongoose.model('Pet', petSchema); // Change model name to 'Pet'
+const Pet = mongoose.model('Pet', petSchema);
 
-app.post('/add-pet', upload.single('petImage'), (req, res) => {
+app.post('/add-pet', (req, res) => {
   const petData = {
     name: req.body.petName,
     age: req.body.petAge,
     traits: req.body.petTraits,
     toy: req.body.petToy,
-    image: req.file.filename
+    image: {
+      url: ''
+    }
   };
 
-  const pet = new Pet(petData);
+  const accessKeyIdJson = require('./accessKeyId.json');
+  const secretAccessKeyJson = require('./secretAccessKey.json');
 
-  pet.save()
+  aws.config.update({
+    accessKeyId: accessKeyIdJson.accessKeyId,
+    secretAccessKey: secretAccessKeyJson.secretAccessKey,
+    region: 'us-east-1'
+  });
+
+  const s3 = new aws.S3();
+
+  const file = req.files.petImage;
+  const fileName = file.name;
+
+  async function uploadFile() {
+    const params = {
+      Bucket: 'pawsterimgbucket',
+      Key: fileName,
+      Body: file.data
+    };
+  
+    try {
+      await s3.putObject(params).promise();
+      petData.image.url = `https://pawsterimgbucket.s3.amazonaws.com/${fileName}`;
+      console.log('File uploaded successfully');
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  
+  // Call the uploadFile function before saving pet data
+  uploadFile()
+    .then(() => {
+      const pet = new Pet(petData);
+      return pet.save();
+    })
     .then(() => {
       res.status(200).send('Pet data stored successfully');
     })
@@ -46,19 +85,9 @@ app.post('/add-pet', upload.single('petImage'), (req, res) => {
       console.error('Error storing pet data:', err);
       res.status(500).send('Error storing pet data');
     });
+  
 });
 
-// Route to get all pets
-app.get('/get-pets', (req, res) => {
-  Pet.find({}, (err, pets) => {
-    if (err) {
-      console.log('Error fetching pets:', err);
-      res.status(500).json({ error: 'Error fetching pets' });
-    } else {
-      res.json({ pets: pets });
-    }
-  });
-});
 
 app.get('/search', async (req, res) => {
   const searchTerm = req.query.term;
@@ -69,21 +98,6 @@ app.get('/search', async (req, res) => {
     return;
   }
   res.json(pets);
-});
-
-// Route to get a pet by ID
-app.get('/get-pet', (req, res) => {
-  const id = req.query.id;
-  Pet.findById(id, (err, pet) => {
-    if (err) {
-      console.log('Error fetching pet:', err);
-      res.status(500).json({ error: 'Error fetching pet' });
-    } else if (!pet) {
-      res.status(404).json({ error: 'Pet not found' });
-    } else {
-      res.json(pet);
-    }
-  });
 });
 
 app.listen(3000, () => {

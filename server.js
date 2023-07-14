@@ -51,7 +51,10 @@ app.post('/add-pet', (req, res) => {
     region: 'us-east-1'
   });
 
-  const s3 = new aws.S3();
+  // Change the URL to point to your Vercel deployment
+  const s3 = new aws.S3({
+    endpoint: 'https://s3.amazonaws.com'
+  });
 
   const file = req.files.petImage;
   const fileName = file.name;
@@ -62,7 +65,7 @@ app.post('/add-pet', (req, res) => {
       Key: fileName,
       Body: file.data
     };
-  
+
     try {
       await s3.putObject(params).promise();
       petData.image.url = `https://pawsterimgbucket.s3.amazonaws.com/${fileName}`;
@@ -71,7 +74,7 @@ app.post('/add-pet', (req, res) => {
       console.error(error);
     }
   }
-  
+
   // Call the uploadFile function before saving pet data
   uploadFile()
     .then(() => {
@@ -85,7 +88,7 @@ app.post('/add-pet', (req, res) => {
       console.error('Error storing pet data:', err);
       res.status(500).send('Error storing pet data');
     });
-  
+
 });
 
 

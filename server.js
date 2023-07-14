@@ -3,14 +3,17 @@ const cors = require('cors');
 const fileUpload = require('express-fileupload');
 const mongoose = require('mongoose');
 const aws = require('aws-sdk');
-const fs = require('fs');
+require('dotenv').config()
 
 const app = express();
 
 app.use(fileUpload());
 app.use(cors());
 
-mongoose.connect('mongodb+srv://aashayk18:AashayK_180802@cluster0.x4zv7c7.mongodb.net/petDatabase?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
+const PORT = process.env.PORT || 5000;
+const MONGOOSE_URL = process.env.MONGO_URI;
+
+mongoose.connect(MONGOOSE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('MongoDB Connection established successfully.');
   }).catch((err) => {
@@ -100,6 +103,6 @@ app.get('/search', async (req, res) => {
   res.json(pets);
 });
 
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     var fetchPets = async function () {
-        const response = await fetch("http://localhost:3000/search");
+        const response = await fetch("https://pawster-server.onrender.com/search");
         const pets = await response.json();
         generatePetCards(pets);
     };
@@ -75,11 +75,11 @@ document.getElementById("petForm").addEventListener("submit", async function (ev
     formData.append("petToy", petToy);
     formData.append("petImage", petImage);
 
-    const response = await fetch("http://localhost:3000/add-pet", { method: "POST", body: formData });
+    const response = await fetch("https://pawster-server.onrender.com/add-pet", { method: "POST", body: formData });
     if (response.status === 200) {
 
         var fetchPets = async function () {
-            const response = await fetch("http://localhost:3000/search");
+            const response = await fetch("https://pawster-server.onrender.com/search");
             const pets = await response.json();
             generatePetCards(pets);
         };
@@ -104,7 +104,7 @@ document.getElementById("searchForm").addEventListener("submit", async function 
 
     const searchTerm = document.getElementById("searchTerm").value;
 
-    const response = await fetch("http://localhost:3000/search?term=" + encodeURIComponent(searchTerm));
+    const response = await fetch("https://pawster-server.onrender.com/search?term=" + encodeURIComponent(searchTerm));
     const pets = await response.json();
 
     const petDetailsContent = document.getElementById("petDetailsContent");

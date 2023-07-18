@@ -163,13 +163,13 @@ p {
 /* Form Modal */
 
 .modal-content {
-    background-color: #4e3a08;
+    background-color: #211800;
     color: #FFEECB;
     text-align: left;
 }
 
 .modal-header {
-    background-color: #4e3a08;
+    background-color: #211800;
     color: #FFEECB;
     border-bottom: none;
     margin-bottom: -5px;
@@ -260,13 +260,13 @@ p {
 .card .personality,
 .card .toy {
     margin-bottom: 5px;
-    color: #4e3a08;
+    color: #211800;
 }
 
 .card .age span,
 .card .personality span,
 .card .toy span {
-    color: #4e3a08;
+    color: #211800;
 }
 
 .loader {

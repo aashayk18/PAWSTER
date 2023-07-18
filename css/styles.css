@@ -56,7 +56,7 @@ p {
 
 .white-section {
     background-color: #FFEECB;
-    color: #4e3a08;
+    color: #211800;
 }
 
 /* Navigation Bar */
@@ -152,12 +152,12 @@ p {
 }
 
 #footer p {
-    color: #4e3a08;
+    color: #211800;
     margin-bottom: 7.5px;
 }
 
 #footer a {
-    color: #4e3a08;
+    color: #211800;
 }
 
 /* Form Modal */
@@ -246,13 +246,13 @@ p {
 .card .name {
     font-weight: 600;
     font-size: 1.1rem;
-    color: #4e3a08;
+    color: #211800;
     margin-bottom: 10px;
     text-align: center;
 }
 
 .card .name span {
-    color: #4e3a08;
+    color: #211800;
     font-weight: 400;
 }
 

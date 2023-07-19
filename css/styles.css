@@ -21,7 +21,7 @@ h6 {
 }
 
 p {
-    color: white;
+    color: #FFEECB;
 }
 
 /* Headings */
@@ -190,11 +190,11 @@ p {
 }
 
 .modal .btn-close {
-    color: #fff;
+    color: #FFEECB;
 }
 
 .modal-footer .btn-close {
-    color: #fff;
+    color: #FFEECB;
     opacity: 1;
 }
 
@@ -297,4 +297,116 @@ p {
     width: 400px;
     display: flex;
     margin: 0;
+    background-color: #211800;
+}
+
+.modal-header {
+    background-color: #211800;
+}
+
+hr {
+    background-color: #211800;
+    border: dotted #FFEECB 6px;
+    border-bottom: none;
+    border-radius: 50%;
+    width: 4%;
+    margin: 0 auto;
+    display: none;
+}
+
+@media screen and (max-width: 480px) {
+
+    .container-fluid {
+        padding: 0;
+    }
+
+    .col-lg-6 {
+        width: 50%;
+    }
+
+    .big-heading {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .cta {
+        font-size: 1.2rem;
+        ;
+    }
+
+    .section-heading {
+        font-size: 1.5rem;
+        padding-top: 40px;
+        padding-bottom: 0px;
+    }
+
+    .navbar {
+        width: 300px;
+        height: 100px;
+        margin-top: -100px;
+        margin-bottom: 20px;
+    }
+
+    .navbar-logo {
+        width: 20px;
+        height: 10px;
+        margin-top: 10px;
+    }
+
+    .nav-item {
+        padding: 0 10px;
+    }
+
+    #tagline {
+        width: 50%;
+        margin: 0 auto;
+        margin-top: 320px;
+        text-align: center;
+        padding-bottom: 40px;
+    }
+
+    .download-button {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    hr {
+        background-color: #211800;
+        border: dotted #FFEECB 6px;
+        border-bottom: none;
+        border-radius: 50%;
+        width: 12%;
+        margin: 0px auto;
+        display: flex;
+    }
+
+    #carousel {
+        width: 55%;
+        margin: 0 auto;
+        padding: auto;
+        padding-left: 10px;
+        padding-bottom: 20px;
+        margin-top: -520px;
+    }
+
+    /* .feature-box {
+        width: 100%;
+        margin: 10px;
+    } */
+
+    .modal-content {
+        padding: 10px;
+    }
+
+    .modal-body {
+        padding: 10px;
+    }
+
+    #petDetailsModal .card {
+        margin: 10px;
+    }
+
+    #features {
+        display: none;
+    }
+
 }

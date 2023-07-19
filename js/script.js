@@ -137,24 +137,24 @@ document.getElementById("searchForm").addEventListener("submit", async function 
             name.style.fontFamily = "Montserrat";
             name.style.fontWeight = "600";
             name.style.fontSize = "1.1rem";
-            name.style.color = "#4e3a08";
+            name.style.color = "#211800";
             name.style.marginTop = "10px";
             name.style.marginBottom = "15px";
             petDetails.appendChild(name);
 
             var age = document.createElement("p");
             age.textContent = "Age: " + pet.age;
-            age.style.color = "#4e3a08";
+            age.style.color = "#211800";
             petDetails.appendChild(age);
 
             var traits = document.createElement("p");
             traits.textContent = "Traits: " + pet.traits;
-            traits.style.color = "#4e3a08";
+            traits.style.color = "#211800";
             petDetails.appendChild(traits);
 
             var toy = document.createElement("p");
             toy.textContent = "Favorite Toy: " + pet.toy;
-            toy.style.color = "#4e3a08";
+            toy.style.color = "#211800";
             toy.style.marginBottom = "20px";
             petDetails.appendChild(toy);
 

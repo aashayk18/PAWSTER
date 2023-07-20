@@ -345,7 +345,7 @@ hr {
     }
 
     .navbar {
-        width: 50%;
+        width: 52.5%;
         height: 50px;
         margin-left: auto;
         margin-right: auto;
@@ -445,6 +445,10 @@ hr {
 
     #features {
         display: none;
+    }
+
+    .custom-modal {
+        width: 90%;
     }
 
 }

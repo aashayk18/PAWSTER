@@ -427,14 +427,19 @@ hr {
 
     .custom-modal {
         width: 97.5%;
-        margin: auto;
+        margin: 0 auto;
+        justify-content: center;
     }
 
     #petDetailsContent {
         width: 100%;
-        margin: auto;
+        margin: 0 auto;
     }
 
+    .cust-head {
+        width: 97.5%;
+        margin: 0 auto;
+    }
     .modal-content {
         padding: 10px;
     }

@@ -423,6 +423,7 @@ hr {
 
     #carousel {
         width: 55%;
+        height: 200px;
         margin: 0 auto;
         padding: auto;
         padding-left: 10px;

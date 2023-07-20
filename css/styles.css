@@ -66,6 +66,10 @@ p {
     margin-bottom: -20px;
 }
 
+.navbar-padding {
+    display: hidden;
+}
+
 .navbar-logo {
     width: 200px;
     height: 50px;
@@ -318,6 +322,7 @@ hr {
 
     body {
         overflow-x: hidden;
+        /* padding-top: 140px; */
     }
 
     .container-fluid {
@@ -349,17 +354,22 @@ hr {
         height: 50px;
         margin-left: auto;
         margin-right: auto;
-        margin-top: 100px; 
+        margin-top: 100px;
         margin-bottom: 20px;
+    }
+
+    .navbar-padding {
+        transition: height 0.3s ease;
     }
 
     .nav-custom {
         margin-top: 10px;
+        margin-right: 5px;
     }
 
-    /* .nav-cont {
+    .nav-cont {
         margin-bottom: 20px;
-    } */
+    }
 
     .navbar-logo {
         width: 205px;
@@ -368,8 +378,8 @@ hr {
         /* margin-left: -40px; */
     }
 
-    .nav-item {
-        padding: 0 10px;
+    .features {
+        display: none;
     }
 
     .nav-link {
@@ -377,12 +387,16 @@ hr {
         font-family: "Montserrat";
         font-weight: 400;
         color: black;
-    }    
+    }
+
+    .search-bar {
+        margin-left: -10px;
+    }
 
     #tagline {
         width: 50%;
         margin: 0 auto;
-        margin-top: 280px;
+        margin-top: 260px;
         text-align: center;
         padding-bottom: 40px;
     }
@@ -391,6 +405,7 @@ hr {
         margin-left: auto;
         margin-right: auto;
     }
+
     hr {
         background-color: #211800;
         border: dotted #FFEECB 6px;
@@ -410,9 +425,10 @@ hr {
         margin-top: -520px;
     }
 
-    /* .feature-box {
-        width: 100%;
-        margin: 10px;
+   /* #petDetailsModal {
+        width: 90%;
+        margin: 0 auto;
+        justify-content: center;
     } */
 
     .modal-content {

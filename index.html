@@ -35,9 +35,9 @@
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse nav-cont" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
+            <li class="nav-item features">
               <a class="nav-link" href="#features">Features</a>
             </li>
             <li class="nav-item">
@@ -48,16 +48,16 @@
             </li>
             <li class="nav-item">
               <form id="searchForm" class="d-flex" autocomplete="off">
-                <input class="form-control me-2" type="search" id="searchTerm" placeholder="Search Pet"
+                <input class="form-control me-2 search-bar" type="search" id="searchTerm" placeholder="Search Pet"
                   aria-label="Search">
                 <button class="btn btn-outline-light" type="submit">Search</button>
               </form>
             </li>
           </ul>
         </div>
-
-
       </nav>
+
+      <div class="navbar-padding"></div>
 
       <!-- Title -->
 
@@ -149,7 +149,7 @@
 
   <div class="list">
     <script id="pet-card-template" type="text/x-handlebars-template">
-      <div class="card" data-pet-type="{{ type }}">
+      <div class="card" data-pet-type="{{ type }}" data-pet-id="{{ id }}">
         <div class="image">
           <div class="loader"></div>
           <img alt="{{ name }}">

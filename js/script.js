@@ -2,6 +2,26 @@ document.addEventListener("DOMContentLoaded", function () {
     var petCardTemplate = document.getElementById("pet-card-template").innerHTML;
     var template = Handlebars.compile(petCardTemplate);
 
+    const navbar = document.querySelector(".navbar");
+    const navbarPadding = document.querySelector(".navbar-padding");
+
+    function showNavbarPadding() {
+        setTimeout(() => {
+            navbarPadding.style.display = "block";
+            navbarPadding.style.height = "140px";
+          }, 100);
+    }
+
+    function hideNavbarPadding() {
+        navbarPadding.style.height = "0px";
+        setTimeout(() => {
+            navbarPadding.style.display = "none";
+          }, 300);
+    }
+
+    navbar.addEventListener("show.bs.collapse", showNavbarPadding);
+    navbar.addEventListener("hide.bs.collapse", hideNavbarPadding);
+
     function generatePetCards(pets) {
         var petCardsContainer = document.getElementById("petCardsContainer");
         petCardsContainer.innerHTML = "";

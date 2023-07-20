@@ -425,11 +425,15 @@ hr {
         margin-top: -520px;
     }
 
-   /* #petDetailsModal {
-        width: 90%;
-        margin: 0 auto;
-        justify-content: center;
-    } */
+    .custom-modal {
+        width: 95%;
+        margin: auto;
+    }
+
+    #petDetailsContent {
+        width: 95%;
+        margin: auto;
+    }
 
     .modal-content {
         padding: 10px;
@@ -445,10 +449,6 @@ hr {
 
     #features {
         display: none;
-    }
-
-    .custom-modal {
-        width: 90%;
     }
 
 }

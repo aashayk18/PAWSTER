@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function showNavbarPadding() {
         setTimeout(() => {
             navbarPadding.style.display = "block";
-            navbarPadding.style.height = "130px";
+            navbarPadding.style.height = "120px";
           }, 100);
     }
 

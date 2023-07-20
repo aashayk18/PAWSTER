@@ -352,6 +352,7 @@ hr {
 
     .navbar {
         width: 390px;
+        max-width: 90%;
         height: 50px;
         margin-left: auto;
         margin-right: auto;

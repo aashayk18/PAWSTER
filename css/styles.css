@@ -220,6 +220,7 @@ p {
     margin-bottom: 20px;
     margin-left: 20px;
     margin-right: 20px;
+    max-width: 383.2px;
     padding: 10px;
     transition: transform 0.3s ease;
 }

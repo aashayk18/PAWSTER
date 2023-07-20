@@ -2,46 +2,45 @@ document.addEventListener("DOMContentLoaded", function () {
     var petCardTemplate = document.getElementById("pet-card-template").innerHTML;
     var template = Handlebars.compile(petCardTemplate);
 
-    const petCardsContainer = document.getElementById("petCardsContainer");
-    const petDetailsModal = document.getElementById("petDetailsModal");
+    // const petCardsContainer = document.getElementById("petCardsContainer");
+    // const petDetailsModal = document.getElementById("petDetailsModal");
 
-    petCardsContainer.addEventListener("click", function (event) {
-        if (event.target.classList.contains("card")) {
-            const petId = event.target.dataset.petId;
+    // petCardsContainer.addEventListener("click", function (event) {
+    //     if (event.target.classList.contains("card")) {
+    //         const petId = event.target.dataset.petId;
 
-            const petDetails = getPetDetailsById(petId);
+    //         const petDetails = getPetDetailsById(petId);
 
-            const petDetailsContent = document.getElementById("petDetailsContent");
-            petDetailsContent.innerHTML = `
-              <div class="name">
-                <strong>Name:</strong>
-                <span>${petDetails.name}</span>
-              </div>
-              <div class="age">
-                <strong>Age:</strong>
-                <span>${petDetails.age}</span>
-              </div>
-              <div class="personality">
-                <strong>Personality Traits:</strong>
-                <span>${petDetails.traits}</span>
-              </div>
-              <div class="toy">
-                <strong>Favorite Toy:</strong>
-                <span>${petDetails.toy}</span>
-              </div>
-              <!-- Add other pet details as needed -->
-            `;
+    //         const petDetailsContent = document.getElementById("petDetailsContent");
+    //         petDetailsContent.innerHTML = `
+    //           <div class="name">
+    //             <strong>Name:</strong>
+    //             <span>${petDetails.name}</span>
+    //           </div>
+    //           <div class="age">
+    //             <strong>Age:</strong>
+    //             <span>${petDetails.age}</span>
+    //           </div>
+    //           <div class="personality">
+    //             <strong>Personality Traits:</strong>
+    //             <span>${petDetails.traits}</span>
+    //           </div>
+    //           <div class="toy">
+    //             <strong>Favorite Toy:</strong>
+    //             <span>${petDetails.toy}</span>
+    //           </div>
+    //         `;
       
-            const modal = new bootstrap.Modal(petDetailsModal);
-            modal.show();
-        }
-    })
+    //         const modal = new bootstrap.Modal(petDetailsModal);
+    //         modal.show();
+    //     }
+    // })
 
-    async function getPetDetailsById(petId) {
-        const response = await fetch("https://pawster-server.onrender.com/getPetById?id=" + encodeURIComponent(petId));
-        const petDetails = await response.json();
-        return petDetails;
-      }
+    // async function getPetDetailsById(petId) {
+    //     const response = await fetch("https://pawster-server.onrender.com/getPetById?id=" + encodeURIComponent(petId));
+    //     const petDetails = await response.json();
+    //     return petDetails;
+    //   }
 
     const navbar = document.querySelector(".navbar");
     const navbarPadding = document.querySelector(".navbar-padding");

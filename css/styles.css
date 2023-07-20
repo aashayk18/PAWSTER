@@ -390,7 +390,12 @@ hr {
     }
 
     .search-bar {
+        margin-top: 10px;
         margin-left: -10px;
+    }
+
+    .search-button {
+        margin-top: 10px;
     }
 
     #tagline {

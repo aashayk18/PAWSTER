@@ -263,14 +263,16 @@ p {
 
 .card .age,
 .card .personality,
-.card .toy {
+.card .toy,
+.card .owner {
     margin-bottom: 5px;
     color: #211800;
 }
 
 .card .age span,
 .card .personality span,
-.card .toy span {
+.card .toy span,
+.card .owner span {
     color: #211800;
 }
 

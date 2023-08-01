@@ -221,9 +221,9 @@ document.getElementById("searchForm").addEventListener("submit", async function 
             petDetails.appendChild(toy);
 
             var owner = document.createElement("p");
-            toy.textContent = "Owner Name: " + pet.owner;
-            toy.style.color = "#211800";
-            toy.style.marginBottom = "20px";
+            owner.textContent = "Owner Name: " + pet.owner;
+            owner.style.color = "#211800";
+            owner.style.marginBottom = "20px";
             petDetails.appendChild(owner);
 
             petDetailsContent.appendChild(petDetails);

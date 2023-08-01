@@ -104,7 +104,7 @@ document.getElementById("petForm").addEventListener("submit", async function (ev
     var petAge = document.getElementById("petAge").value;
     var petTraits = document.getElementById("petTraits").value;
     var petToy = document.getElementById("petToy").value;
-    var petToy = document.getElementById("petOwner").value;
+    var petOwner = document.getElementById("petOwner").value;
     var petImage = document.getElementById("petImage").files[0];
 
     // Extracting the numeric value and unit from the age string

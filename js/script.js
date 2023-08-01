@@ -104,6 +104,7 @@ document.getElementById("petForm").addEventListener("submit", async function (ev
     var petAge = document.getElementById("petAge").value;
     var petTraits = document.getElementById("petTraits").value;
     var petToy = document.getElementById("petToy").value;
+    var petToy = document.getElementById("petOwner").value;
     var petImage = document.getElementById("petImage").files[0];
 
     // Extracting the numeric value and unit from the age string
@@ -133,6 +134,7 @@ document.getElementById("petForm").addEventListener("submit", async function (ev
     formData.append("petAge", petAge);
     formData.append("petTraits", petTraits);
     formData.append("petToy", petToy);
+    formData.append("petOwner", petOwner);
     formData.append("petImage", petImage);
 
     const response = await fetch("https://pawster-server.onrender.com/add-pet", { method: "POST", body: formData });
@@ -217,6 +219,12 @@ document.getElementById("searchForm").addEventListener("submit", async function 
             toy.style.color = "#211800";
             toy.style.marginBottom = "20px";
             petDetails.appendChild(toy);
+
+            var owner = document.createElement("p");
+            toy.textContent = "Owner Name: " + pet.owner;
+            toy.style.color = "#211800";
+            toy.style.marginBottom = "20px";
+            petDetails.appendChild(owner);
 
             petDetailsContent.appendChild(petDetails);
         });

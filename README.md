@@ -23,7 +23,7 @@ A pet lovers' community where you can showcase your furry friends and their *uni
 
 ## 🚀 Getting Started 
 
-To get started with My Pet Spotlight, simply visit our [website](https://pawster.vercel.app/). From there, you can browse through existing pet profiles or create your own.
+To get started with PAWSTER, simply visit our [website](https://pawster.vercel.app/). From there, you can browse through existing pet profiles or create your own.
 
 To create a pet profile, click the "Get Started" button and contribute with your pet's information, including their name, breed, age, and photo.
 
